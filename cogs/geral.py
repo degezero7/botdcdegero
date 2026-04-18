@@ -11,16 +11,16 @@ class Geral(commands.Cog):
     async def olamundo(self, interaction: discord.Interaction):
         await interaction.response.send_message(f"Olá {interaction.user.mention}")
 
-    @app_commands.command(name="menu", description="Abre o menu do bot")
+    @app_commands.command(name="menu", description="Abre o Painel do bot")
     async def menu(self, interaction: discord.Interaction):
         embed = discord.Embed(
-            title="Menu do Gezero",
-            description="Escolha uma opção abaixo",
+            title="Painel do Gezero",
+            description="Use uma opção abaixo",
             color=discord.Color.red()
         ) 
-        embed.set_footer(text="Bot em Desenvolvimento")
+        embed.set_footer(text="Bot em Desenvolvimento por David")
 
-        await interaction.response.send_message(embed=embed, view=MenuView())
+        await interaction.response.send_message(embed=embed, view=MenuView(interaction.user))
 
     @app_commands.command(name="embed", description="Exemplo de Embed")
     async def embed(self, interaction: discord.Interaction):
