@@ -1,1 +1,2 @@
 Esse bot tem a finalidade de fazer com que funcione de acordo com minhas necessidades, tenho a necessidade de criar algo relacionado com o jogo que estou jogando por exemplo, jjs.
+Meu objetivo é um bot bem completo, que abre chamados, gerencia players e participa tambem em sistema de trade no jogo q eu jogo

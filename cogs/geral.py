@@ -1,6 +1,7 @@
 import discord
 from discord import app_commands
 from discord.ext import commands
+from views.menu import MenuView
 
 class Geral(commands.Cog):
     def __init__(self, bot):
@@ -9,6 +10,17 @@ class Geral(commands.Cog):
     @app_commands.command(name="saudação",description="Comando de saudação")
     async def olamundo(self, interaction: discord.Interaction):
         await interaction.response.send_message(f"Olá {interaction.user.mention}")
+
+    @app_commands.command(name="menu", description="Abre o menu do bot")
+    async def menu(self, interaction: discord.Interaction):
+        embed = discord.Embed(
+            title="Menu do Gezero",
+            description="Escolha uma opção abaixo",
+            color=discord.Color.red()
+        ) 
+        embed.set_footer(text="Bot em Desenvolvimento")
+
+        await interaction.response.send_message(embed=embed, view=MenuView())
 
     @app_commands.command(name="embed", description="Exemplo de Embed")
     async def embed(self, interaction: discord.Interaction):
