@@ -11,6 +11,9 @@ TOKEN = os.getenv("TOKEN")
 if not TOKEN:
     raise ValueError("A variável TOKEN não foi encontrada no ambiente.")
 
+GUILD_ID = 817116003178774580
+guild = discord.Object(id=GUILD_ID)
+
 intents = discord.Intents.default()
 intents.message_content = False
 
@@ -23,7 +26,9 @@ async def on_ready():
     global synced
 
     if not synced:
-        await bot.tree.sync()
+        #copia os comandos globais para essa guild e sincroniza só nela
+        bot.tree.copy_global_to(guild=guild)
+        await bot.tree.sync(guild = guild)
         synced = True
         print("Slash commands sincronizados!")
 
