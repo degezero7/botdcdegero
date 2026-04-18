@@ -43,6 +43,20 @@ class MenuView(discord.ui.View):
             view=None
         )
 
+    @discord.ui.button(label="Chamados", style=discord.ButtonStyle.primary, emoji="🎫", row=1)
+    async def chamados(self, interaction: discord.Interaction):
+        await interaction.response.send_message(
+            "🎫 Sistema de chamados em construção.",
+            ephemeral=True
+        )
+    
+    @discord.ui.button(label="Players", style=discord.ButtonStyle.success, emoji="👤", row=1)
+    async def players(self, interaction: discord.Interaction, button: discord.ui.Button):
+        await interaction.response.send_message(
+            "👤 Sistema de Players em construção"
+        )
+    
+
 class DesligarButton(discord.ui.Button):
     def __init__(self):
         super().__init__(label="Desligar Bot", style=discord.ButtonStyle.danger, emoji="🛑")
@@ -53,7 +67,7 @@ class DesligarButton(discord.ui.Button):
         is_owner = user.id == OWNER_ID
         is_admin = user.guild_permissions.administrator
 
-        if not (is_owner or is_owner):
+        if not (is_owner or is_admin):
             await interaction.response.send_message(
                 "❌ Você não tem permissão para desligar o bot.",
                 ephemeral=True
