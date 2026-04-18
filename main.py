@@ -6,11 +6,16 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+#Token é o codigo confidencial do bot
 TOKEN = os.getenv("TOKEN")
 
 if not TOKEN:
     raise ValueError("A variável TOKEN não foi encontrada no ambiente.")
 
+#Id do Usuário
+OWNER_ID = 1068747060729352364
+
+#Id do servidor
 GUILD_ID = 817116003178774580
 guild = discord.Object(id=GUILD_ID)
 
@@ -42,14 +47,34 @@ async def testenovo(interaction:discord.Interaction):
 async def versao(interaction:discord.Interaction):
     await interaction.response.send_message("Estou na nova versão do bot")
 
+#Desligar o bot pelo discord
+@bot.tree.command(name="desligar", description="Desligar o bot")
+async def desligar(interaction: discord.Interaction):
+
+    is_owner = interaction.user.id == OWNER_ID
+    is_admin = interaction.user.guild_permissions.administrator
+    
+    if not (is_owner or is_admin):
+        await interaction.response.send_message(
+            "❌ Opa! Calma lá, apenas Administradores podem usar.",
+            ephemeral=True
+        )
+        return
+
+    await interaction.response.send_message("Desligando...", ephemeral=True)
+    await bot.close()
+
 async def load_extensions():
     await bot.load_extension("cogs.geral")
     await bot.load_extension("cogs.util")
 
 async def main():
     async with bot:
-        print("===NOVA VERSÃO BOT===")
+        print("===BOT INICIANDO===")
         await load_extensions()
         await bot.start(TOKEN)
 
-asyncio.run(main())
+try:
+    asyncio.run(main())
+except KeyboardInterrupt:
+    print("⛔ Encerrando bot... ⛔")

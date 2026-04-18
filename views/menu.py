@@ -22,7 +22,7 @@ class MenuView(discord.ui.View):
         latency = round(interaction.client.latency * 1000)
         await interaction.response.send_message(f"🏓 Pong! {latency}ms", ephemeral=True)
     
-    @discord.ui.button(label="Fechar", style=discord.ButtonStyle.danger, emoji="🏓")
+    @discord.ui.button(label="Fechar", style=discord.ButtonStyle.danger, emoji="⛔")
     async def fechar(self, interaction:discord.Interaction, button:discord.ui.Button):
         await interaction.response.edit_message(
             content="Menu fechado.",
