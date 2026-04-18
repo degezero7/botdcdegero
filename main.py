@@ -1,4 +1,5 @@
 import os
+import asyncio
 import discord
 from discord.ext import commands
 from dotenv import load_dotenv
@@ -15,9 +16,26 @@ intents.message_content = False
 
 bot = commands.Bot(command_prefix="!", intents=intents)
 
+synced = False
+
 @bot.event
 async def on_ready():
+    global synced
+
+    if not synced:
+        await bot.tree.sync()
+        synced = True
+        print("Slash commands sincronizados!")
+
     print(f"O Bot {bot.user} ligado com sucesso!")
+
+@bot.tree.command(name="teste-novo", description="Teste da nova versão")
+async def testenovo(interaction:discord.Interaction):
+    await interaction.response.send_message("Versão nova funcionando!")
+
+@bot.tree.command(name="versao", description="Mostra a versão atual")
+async def versao(interaction:discord.Interaction):
+    await interaction.response.send_message("Estou na nova versão do bot")
 
 async def load_extensions():
     await bot.load_extension("cogs.geral")
@@ -25,8 +43,8 @@ async def load_extensions():
 
 async def main():
     async with bot:
+        print("===NOVA VERSÃO BOT===")
         await load_extensions()
         await bot.start(TOKEN)
 
-import asyncio
 asyncio.run(main())
