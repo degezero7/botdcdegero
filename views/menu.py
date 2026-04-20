@@ -27,6 +27,7 @@ class MenuView(discord.ui.View):
         embed.add_field(name="/soma", value="Soma dois números distintos", inline=False)
         embed.add_field(name="/versao", value="Mostra em qual versão atual do Gezero", inline=False)
         embed.add_field(name="/desligar", value="Desliga o bot", inline=False)
+        embed.add_field(name="/menu", value="Abre o painel do Gezero", inline=False)
 
         await interaction.response.send_message(embed=embed, ephemeral=True)
 
@@ -53,7 +54,8 @@ class MenuView(discord.ui.View):
     @discord.ui.button(label="Players", style=discord.ButtonStyle.success, emoji="👤", row=1)
     async def players(self, interaction: discord.Interaction, button: discord.ui.Button):
         await interaction.response.send_message(
-            "👤 Sistema de Players em construção"
+            "👤 Sistema de Players em construção",
+            ephemeral=True
         )
     
 
