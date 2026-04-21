@@ -1,5 +1,4 @@
 import discord
-from views.menu import MenuView
 
 OWNER_ID = 1068747060729352364
 
@@ -24,9 +23,7 @@ class MenuView(discord.ui.View):
         if self.message:
             await self.message.edit(
                 content="⏱️ Este painel expirou.",
-                view=self,
-                embed=None,
-                view=None
+                view=self
             )
 
     @discord.ui.button(label="Ajuda", style=discord.ButtonStyle.primary, emoji="❓")
