@@ -1,5 +1,5 @@
 import discord
-
+#teste para saber se funcionou
 OWNER_ID = 1068747060729352364
 
 class MenuView(discord.ui.View):
