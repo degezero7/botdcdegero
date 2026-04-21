@@ -4,7 +4,7 @@ OWNER_ID = 1068747060729352364
 
 class MenuView(discord.ui.View):
     def __init__(self, user:discord.User):
-        super().__init__(timeout=120)
+        super().__init__(timeout=10)
         self.user = user
         self.message = None #Salvar a mensagem
     
@@ -25,7 +25,8 @@ class MenuView(discord.ui.View):
         if self.message:
             await self.message.edit(
                 content="⏱️ Este painel expirou.",
-                view=self
+                embed=None,
+                view=None,
             )
 
     @discord.ui.button(label="Ajuda", style=discord.ButtonStyle.primary, emoji="❓")
