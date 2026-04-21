@@ -1,4 +1,5 @@
 import discord
+from views.menu import MenuView
 
 OWNER_ID = 1068747060729352364
 
