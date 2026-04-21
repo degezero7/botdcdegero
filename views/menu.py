@@ -54,11 +54,10 @@ class MenuView(discord.ui.View):
     @discord.ui.button(label="Players", style=discord.ButtonStyle.success, emoji="👤", row=1)
     async def players(self, interaction: discord.Interaction, button: discord.ui.Button):
         await interaction.response.send_message(
-            "👤 Sistema de Players em construção",
+            "👤 Sistema de Players em construção", 
             ephemeral=True
         )
     
-
 class DesligarButton(discord.ui.Button):
     def __init__(self):
         super().__init__(label="Desligar Bot", style=discord.ButtonStyle.danger, emoji="🛑")
