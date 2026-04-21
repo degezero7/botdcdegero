@@ -5,6 +5,8 @@ OWNER_ID = 1068747060729352364
 class MenuView(discord.ui.View):
     def __init__(self, user:discord.User):
         super().__init__(timeout=120)
+        self.user = user
+        self.message = None #Salvar a mensagem
     
         if hasattr(user, "guild_permissions"):
             is_admin = user.guild_permissions.administrator

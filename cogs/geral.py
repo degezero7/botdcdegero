@@ -21,7 +21,11 @@ class Geral(commands.Cog):
         embed.set_footer(text="Bot em Desenvolvimento por David")
 
         view = MenuView(interaction.user)
-        await interaction.response.send_message(embed=embed, view=view)
+        
+        await interaction.response.send_message(
+            embed=embed,
+            view=view
+        )
         view.message = await interaction.original_response()
 
     @app_commands.command(name="embed", description="Exemplo de Embed")
