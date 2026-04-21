@@ -4,7 +4,7 @@ OWNER_ID = 1068747060729352364
 
 class MenuView(discord.ui.View):
     def __init__(self, user:discord.User):
-        super().__init__(timeout=10)
+        super().__init__(timeout=600)
         self.user = user
         self.message = None #Salvar a mensagem
     
