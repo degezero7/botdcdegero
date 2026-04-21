@@ -16,6 +16,18 @@ class MenuView(discord.ui.View):
         if is_owner or is_admin:
             self.add_item(DesligarButton())
 
+    async def on_timeout(self):
+        for item in self.children:
+            item.disabled = True # para desativar os botões
+
+        if self.message:
+            await self.message.edit(
+                content="⏱️ Este painel expirou.",
+                view=self,
+                embed=None,
+                view=None
+            )
+
     @discord.ui.button(label="Ajuda", style=discord.ButtonStyle.primary, emoji="❓")
     async def ajuda(self, interaction:discord.Interaction, button:discord.ui.Button):
         embed = discord.Embed(

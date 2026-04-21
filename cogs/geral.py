@@ -20,7 +20,9 @@ class Geral(commands.Cog):
         ) 
         embed.set_footer(text="Bot em Desenvolvimento por David")
 
-        await interaction.response.send_message(embed=embed, view=MenuView(interaction.user))
+        view = MenuView(interaction.user)
+        await interaction.response.send_message(embed=embed, view=view)
+        view.message = await interaction.original_response()
 
     @app_commands.command(name="embed", description="Exemplo de Embed")
     async def embed(self, interaction: discord.Interaction):
