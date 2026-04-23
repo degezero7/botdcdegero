@@ -36,11 +36,14 @@ class MenuView(discord.ui.View):
             description="Aqui estão alguns comandos do Gezero.",
             color=discord.Color.blue()
         )
-        embed.add_field(name="/ola-mundo", value="Mensagem de saudação", inline=False)
+        embed.add_field(name="/saudação", value="Mensagem de saudação", inline=False)
         embed.add_field(name="/soma", value="Soma dois números distintos.", inline=False)
+        embed.add_field(name="/ping", value="Mostra a latência atual do bot.", inline=False)
         embed.add_field(name="/versao", value="Mostra em qual versão atual do Gezero.", inline=False)
+        embed.add_field(name="/teste-novo", value="Verifica se a nova versão está funcionando.", inline=False)
         embed.add_field(name="/desligar", value="Desliga o bot (Somente para Administradores.)", inline=False)
         embed.add_field(name="/menu", value="Abre o painel do Gezero.", inline=False)
+        embed.add_field(name="/embed", value="Exibe um embed de exemplo.", inline=False)
 
         await interaction.response.send_message(embed=embed, ephemeral=True)
 
@@ -58,7 +61,7 @@ class MenuView(discord.ui.View):
         )
 
     @discord.ui.button(label="Chamados", style=discord.ButtonStyle.primary, emoji="🎫", row=1)
-    async def chamados(self, interaction: discord.Interaction):
+    async def chamados(self, interaction: discord.Interaction, button: discord.ui.Button):
         await interaction.response.send_message(
             "🎫 Sistema de chamados em construção.",
             ephemeral=True
