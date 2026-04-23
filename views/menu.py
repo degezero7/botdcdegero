@@ -61,7 +61,7 @@ class MenuView(discord.ui.View):
         )
 
     @discord.ui.button(label="Chamados", style=discord.ButtonStyle.primary, emoji="🎫", row=1)
-    async def chamados(self, interaction: discord.Interaction):
+    async def chamados(self, interaction: discord.Interaction, button: discord.ui.Button):
         await interaction.response.send_message(
             "🎫 Sistema de chamados em construção.",
             ephemeral=True
