@@ -31,9 +31,12 @@ async def on_ready():
     global synced
 
     if not synced:
-        #copia os comandos globais para essa guild e sincroniza só nela
+        # Copia os comandos para a guild de teste e remove o registro global
+        # para evitar comandos de "/" duplicados dentro do servidor.
         bot.tree.copy_global_to(guild=guild)
-        await bot.tree.sync(guild = guild)
+        await bot.tree.sync(guild=guild)
+        bot.tree.clear_commands(guild=None)
+        await bot.tree.sync()
         synced = True
         print("Slash commands sincronizados!")
 
