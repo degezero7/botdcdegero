@@ -19,4 +19,4 @@ jobs:
           script: |
             cd /home/ubuntu/botdcdegero
             git pull origin main
-            docker restart bot-gezero
+            docker compose up -d --build
