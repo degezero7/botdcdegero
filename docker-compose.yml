@@ -4,3 +4,4 @@ services:
     environment:
       - TOKEN=${TOKEN}
     restart: unless-stopped
+    stop_grace_period: 10s
