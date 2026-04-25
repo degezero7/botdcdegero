@@ -1,11 +1,6 @@
 services:
   bot:
-    image: python:3.13-slim
-    container_name: bot-gezero
-    working_dir: /app
-    volumes:
-      - /home/ubuntu/botdcdegero:/app
-    command: sh -c "pip install --no-cache-dir -r requirements.txt && python main.py"
+    build: .
     environment:
       - TOKEN=${TOKEN}
     restart: unless-stopped
