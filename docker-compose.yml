@@ -3,5 +3,5 @@ services:
     build: .
     environment:
       - TOKEN=${TOKEN}
+      - PYTHONUNBUFFERED=1
     restart: unless-stopped
-    stop_grace_period: 10s
