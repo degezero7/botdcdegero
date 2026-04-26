@@ -77,6 +77,8 @@ async def main():
         await load_extensions()
         await bot.start(TOKEN)
 
+print("VERSÃO AUTOMATICA!")
+
 try:
     asyncio.run(main())
 except KeyboardInterrupt:
