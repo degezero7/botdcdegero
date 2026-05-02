@@ -106,5 +106,9 @@ class DesligarButton(discord.ui.Button):
             )
             return
         
+        if not (is_owner or is_admin):
+            return
+
+        
         await interaction.response.send_message("🛑 Desligando o bot...", ephemeral=True)
         await interaction.client.close()
