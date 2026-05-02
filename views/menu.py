@@ -1,5 +1,5 @@
 import discord
-from chamados import AbrirChamadoView
+from views.chamados import AbrirChamadoView
 
 OWNER_ID = 1068747060729352364
 
