@@ -1,4 +1,5 @@
 import discord
+from chamados import AbrirChamadoView
 
 OWNER_ID = 1068747060729352364
 
@@ -62,8 +63,15 @@ class MenuView(discord.ui.View):
 
     @discord.ui.button(label="Chamados", style=discord.ButtonStyle.primary, emoji="🎫", row=1)
     async def chamados(self, interaction: discord.Interaction, button: discord.ui.Button):
+        embed = discord.Embed(
+            title="Sistema de Chamados",
+            description="Clique no botão abaixo para abrir um chamado com a equipe.",
+            color=discord.Color.magenta()
+        )
+
         await interaction.response.send_message(
-            "🎫 Sistema de chamados em construção.",
+            embed=embed,
+            view=AbrirChamadoView(),
             ephemeral=True
         )
     
