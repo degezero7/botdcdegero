@@ -70,6 +70,7 @@ async def desligar(interaction: discord.Interaction):
 async def load_extensions():
     await bot.load_extension("cogs.geral")
     await bot.load_extension("cogs.util")
+    await bot.load_extension("cogs.trade")
 
 async def main():
     async with bot:
