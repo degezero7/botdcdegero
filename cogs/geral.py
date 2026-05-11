@@ -24,7 +24,8 @@ class Geral(commands.Cog):
         
         await interaction.response.send_message(
             embed=embed,
-            view=view
+            view=view,
+            ephemeral=True
         )
         view.message = await interaction.original_response()
 
