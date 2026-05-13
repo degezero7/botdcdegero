@@ -2,10 +2,28 @@ import discord
 from discord import app_commands
 from discord.ext import commands
 from services.dragon_soul_service import buscar_item_por_nome
+from services.dragon_soul_service import buscar_itens
 
 class Trade(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
+
+    @app_commands.command(name="itens", description="Lista de alguns itens da API")
+    async def itens(self, interaction: discord.Interaction):
+        itens = await buscar_itens()
+        
+        if not itens:
+            await interaction.response.send_message("Item não encontrado!")
+            return
+        
+        nomes = []
+
+        for item in itens[:20]:
+            nomes.append(item.get("name", "Sem nome"))
+
+        texto = "\n".join(nomes)
+        
+        await interaction.response.send_message(f"'''{texto}'''")
 
     @app_commands.command(name="valor", description="Consulta o valor de um item do Dragon Soul")
     @app_commands.describe(item="Nome do item")
